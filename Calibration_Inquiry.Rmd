@@ -1,0 +1,24 @@
+Gazepoint_Main <- read.csv("/Users/alinazjoo/Documents/calibrationdata.csv")
+
+
+```{r Analysis, figure.height=resolution, fig.width=resolution}
+
+
+Gazepoint_Main <- read.csv("/Users/alinazjoo/Documents/calibrationdata.csv")
+library(ggplot2)
+install.packages("png")
+library(png)
+install.packages("gridExtra")
+library(gridExtra)
+
+CalibrationImage <- readPNG("/Users/alinazjoo/Documents/Research/Calibration.png")
+
+#pick a color to plot the points in so that they're nicely visible on the calibration image
+#dimensions should reflect the calibration dimensions
+
+CaliQuality <- ggplot(Gazepoint_Main, aes(x=BPOGX, BPOGY) + geom_point(size=2, colour=) + annotation_raster(CalibrationImage, 265.8304, 758.1696, -123.1104, -644.88, interpolate = TRUE) + xlim(0, 1024) +ylim(768, 0) + theme(legend.position="none") + labs(title = "Calibration") + xlab("") + ylab("") + theme(plot.background = element_rect(fill='blue', colour='blue')) + theme(panel.grid=element_line(colour="blue"))
+
+plot(CaliQuality)
+
+                      
+```
